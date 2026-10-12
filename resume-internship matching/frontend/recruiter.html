@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recruiter Talent Intelligence & Analytics · InternMatch</title>
+  <meta name="description" content="Dedicated Recruiter Portal: Talent Acquisition Analytics, Skill Saturation Heatmap, Conversion Pipeline Funnel, Competency Radar, and What-If Scenario Simulator." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="analytics.css" />
+</head>
+<body>
+
+  <!-- Ambient Glowing Aurora Background -->
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- ======================== NAVIGATION ======================== -->
+  <header class="an-nav">
+    <div class="an-nav-inner">
+      <div class="nav-left">
+        <a class="brand-logo" href="index.html">
+          <span class="brand-badge"></span>
+          <span class="brand-title">InternMatch</span>
+          <span class="brand-tag">💼 Recruiter Portal</span>
+        </a>
+      </div>
+
+      <nav class="an-nav-links">
+        <a href="#screener-section" class="an-nav-item screener-nav-pill">⚡ Screen Resumes</a>
+        <a href="#overview" class="an-nav-item active">Overview</a>
+        <a href="#funnel-section" class="an-nav-item">Conversion Funnel</a>
+        <a href="#heatmap-section" class="an-nav-item">Skill Heatmap</a>
+        <a href="#readiness-section" class="an-nav-item">Readiness & Radar</a>
+        <a href="#simulator-section" class="an-nav-item">What-If Simulator</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="applicant.html" class="btn-ghost" title="Open Applicant Resume Matcher">🎓 Applicant Portal →</a>
+        <a href="#screener-section" class="btn-primary" id="topUploadResumesBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Upload & Screen Resumes
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================== MAIN DASHBOARD ======================== -->
+  <main class="dashboard-wrap" id="overview">
+
+    <!-- Top Dashboard Header with Live Filters -->
+    <section class="dash-hero">
+      <div class="dash-hero-content">
+        <div class="eyebrow-pill">
+          <span class="pulse-dot"></span>
+          <span>Talent Intelligence & Acquisition Analytics</span>
+        </div>
+        <h1 class="dash-title">
+          Recruiter <span class="grad-text">Analytics & BI</span> Dashboard
+        </h1>
+        <p class="dash-desc">
+          High-dimensional candidate supply analytics, tech stack saturation heatmaps, pipeline conversion velocity, and mathematical hiring intelligence across all 24 domains.
+        </p>
+      </div>
+
+      <!-- Control Toolbar: Domain + Timeframe Filters -->
+      <div class="toolbar-card">
+        <div class="filter-group">
+          <label for="domainFilter" class="filter-label">Filter Tech Domain</label>
+          <select id="domainFilter" class="custom-select">
+            <option value="all">All Domains (Aggregated 24)</option>
+            <optgroup label="Technology & Engineering">
+              <option value="information-technology">Information Technology & Systems</option>
+              <option value="engineering">Core Engineering & Robotics</option>
+              <option value="ai-ml">AI & Machine Learning</option>
+              <option value="fullstack">Full Stack Web Development</option>
+              <option value="cloud-devops">Cloud & DevOps Infrastructure</option>
+              <option value="data-eng">Data Engineering & Analytics</option>
+              <option value="cybersecurity">Cyber Security & InfoSec</option>
+              <option value="automobile">Automobile Engineering</option>
+              <option value="aviation">Aviation & Aerospace</option>
+              <option value="construction">Construction & Civil Engineering</option>
+            </optgroup>
+            <optgroup label="Business, Finance & Sales">
+              <option value="business-development">Business Development & Strategy</option>
+              <option value="finance">Finance & Investments</option>
+              <option value="banking">Banking & Financial Services</option>
+              <option value="accountant">Accounting & Auditing</option>
+              <option value="consultant">Management Consulting</option>
+              <option value="sales">Sales & Account Management</option>
+            </optgroup>
+            <optgroup label="HR, Legal & Media">
+              <option value="hr">Human Resources & Talent (HR)</option>
+              <option value="advocate">Legal & Advocate Services</option>
+              <option value="public-relations">Public Relations & Communications</option>
+              <option value="digital-media">Digital Marketing & Media</option>
+            </optgroup>
+            <optgroup label="Healthcare, Education & Services">
+              <option value="healthcare">Healthcare & Medical Services</option>
+              <option value="teacher">Education & Teaching</option>
+              <option value="designer">Design & UI/UX</option>
+              <option value="arts">Creative Arts & Entertainment</option>
+              <option value="chef">Culinary Arts & Chef Management</option>
+              <option value="fitness">Fitness & Wellness</option>
+              <option value="apparel">Fashion & Apparel</option>
+              <option value="agriculture">Agriculture & Agritech</option>
+              <option value="bpo">BPO & Customer Operations</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Timeframe Window</label>
+          <div class="time-pills" id="timeFilter">
+            <button class="time-btn active" data-range="30d">Last 30 Days</button>
+            <button class="time-btn" data-range="90d">Q1 2026</button>
+            <button class="time-btn" data-range="ytd">Year to Date</button>
+          </div>
+        </div>
+
+        <div class="status-indicator">
+          <span class="stat-status-dot"></span>
+          <div class="stat-status-text">
+            <strong>Platform-Wide Sample</strong>
+            <small>Updated today · 3,842 Resumes Analyzed</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== KPI SCORECARD ROW ======================== -->
+    <section class="kpi-grid">
+
+      <!-- KPI 1 -->
+      <div class="kpi-box">
+        <div class="kpi-top">
+          <div class="kpi-icon-wrap icon-purple">👥</div>
+          <span class="trend-pill trend-up">↑ 16.4% MoM</span>
+        </div>
+        <div class="kpi-content">
+          <span class="kpi-number" id="kpiTotalPool" data-target="3842">0</span>
+          <span class="kpi-name">Talent Pool Analyzed</span>
+        </div>
+        <div class="kpi-formula-info" title="Total unique candidate profiles semantically processed by sentence embeddings">
+          <span class="math-badge">∑ Profiles</span>
+          <small>Across 24 engineering domains</small>
+        </div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="kpi-box">
+        <div class="kpi-top">
+          <div class="kpi-icon-wrap icon-cyan">🎯</div>
+          <span class="trend-pill trend-up">↑ 4.2 pts</span>
+        </div>
+        <div class="kpi-content">
+          <span class="kpi-number" id="kpiQoH" data-target="88.4" data-suffix="/100">0</span>
+          <span class="kpi-name">Quality of Hire Index</span>
+        </div>
+        <div class="kpi-formula-info" title="Formula: 0.40(Skill Match) + 0.35(Readiness) + 0.25(Interview Pass)">
+          <span class="math-badge">QoH Formula</span>
+          <small>0.40(S) + 0.35(R) + 0.25(C)</small>
+        </div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="kpi-box">
+        <div class="kpi-top">
+          <div class="kpi-icon-wrap icon-emerald">⚡</div>
+          <span class="trend-pill trend-up">↑ 6.8% vs Q4</span>
+        </div>
+        <div class="kpi-content">
+          <span class="kpi-number" id="kpiHighFit" data-target="41.2" data-suffix="%">0</span>
+          <span class="kpi-name">High-Fit Yield Rate</span>
+        </div>
+        <div class="kpi-formula-info" title="Percentage of candidates scoring >= 70% semantic match score">
+          <span class="math-badge">Yield: N_fit / N_total</span>
+          <small>1,582 qualified candidates</small>
+        </div>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="kpi-box">
+        <div class="kpi-top">
+          <div class="kpi-icon-wrap icon-amber">⏱️</div>
+          <span class="trend-pill trend-good">↓ 6.8 Days Faster</span>
+        </div>
+        <div class="kpi-content">
+          <span class="kpi-number" id="kpiTTF" data-target="17.8" data-suffix=" Days">0</span>
+          <span class="kpi-name">Avg Time-to-Fill (TTF)</span>
+        </div>
+        <div class="kpi-formula-info" title="Target Days minus Actual Days taken from application to accepted offer">
+          <span class="math-badge">Velocity Index</span>
+          <small>Benchmark: 24.6 days</small>
+        </div>
+      </div>
+
+      <!-- KPI 5 -->
+      <div class="kpi-box">
+        <div class="kpi-top">
+          <div class="kpi-icon-wrap icon-pink">💰</div>
+          <span class="trend-pill trend-up">↑ $49,700 Saved</span>
+        </div>
+        <div class="kpi-content">
+          <span class="kpi-number" id="kpiHoursSaved" data-target="1420" data-suffix=" hrs">0</span>
+          <span class="kpi-name">Recruiter Time Saved</span>
+        </div>
+        <div class="kpi-formula-info" title="Calculated: (3,842 candidates * 22.2 min manual review) - AI processing time">
+          <span class="math-badge">ROI Formula</span>
+          <small>1,420 hrs @ $35/hr recruiter cost</small>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================== CANDIDATE SCREENING & BULK RESUME EVALUATOR ======================== -->
+    <section class="section-card screener-main-card" id="screener-section">
+      <div class="card-head-split">
+        <div>
+          <div class="badge-tag highlight-screener-tag">
+            <span class="pulse-dot"></span>
+            <span>AI Candidate Screening & Bulk Resume Evaluator</span>
+          </div>
+          <h2 class="card-title">Screen Resumes by Role & Generate Suitability Report</h2>
+          <p class="card-desc">
+            Select your required target role across all 24 model domains, upload multiple candidate resumes (PDF or TXT), and generate an instant suitability scorecard and downloadable recruitment report.
+          </p>
+        </div>
+        <div class="screener-quick-actions">
+          <button type="button" class="btn-ghost-sm" id="btnLoadDemoBatch" title="Load sample candidate resumes across multiple engineering & business fields">
+            ✨ Load Demo Candidates (6 Profiles)
+          </button>
+        </div>
+      </div>
+
+      <!-- Screener Configuration & Ingestion Grid -->
+      <div class="screener-grid">
+        
+        <!-- Left: Target Role & Criteria Selection -->
+        <div class="screener-config-col">
+          <div class="config-box">
+            <label for="recruiterTargetRole" class="screener-label">
+              <span class="label-step">1</span>
+              <span>Select Required Target Role / Domain</span>
+            </label>
+            <div class="role-select-wrap">
+              <select id="recruiterTargetRole" class="custom-select role-select">
+                <optgroup label="Technology & IT (Model Categories)">
+                  <option value="INFORMATION-TECHNOLOGY" selected>💻 Information Technology & Systems (120)</option>
+                  <option value="ENGINEERING">⚙️ Core Engineering & Robotics (118)</option>
+                  <option value="AUTOMOBILE">🚗 Automobile & Automotive Engineering (63)</option>
+                  <option value="AVIATION">✈️ Aviation & Aerospace (117)</option>
+                  <option value="CONSTRUCTION">🏗️ Construction & Civil Engineering (112)</option>
+                </optgroup>
+                <optgroup label="Popular Tech Tracks">
+                  <option value="aiml">🤖 AI & Machine Learning (AIML)</option>
+                  <option value="data-science">📊 Data Science & Big Data</option>
+                  <option value="fullstack">🌐 Web & Full Stack Development</option>
+                  <option value="cloud-devops">☁️ Cloud Computing & DevOps</option>
+                  <option value="cybersecurity">🛡️ Cybersecurity & InfoSec</option>
+                </optgroup>
+                <optgroup label="Business, Finance & Consulting">
+                  <option value="BUSINESS-DEVELOPMENT">💼 Business Development & Strategy (120)</option>
+                  <option value="FINANCE">📈 Finance & Investments (118)</option>
+                  <option value="BANKING">🏦 Banking & Financial Services (115)</option>
+                  <option value="ACCOUNTANT">📑 Accounting & Auditing (118)</option>
+                  <option value="CONSULTANT">👔 Management & Strategy Consulting (115)</option>
+                  <option value="SALES">🤝 Sales & Account Management (116)</option>
+                </optgroup>
+                <optgroup label="HR, Legal & Communications">
+                  <option value="HR">👥 Human Resources (HR) & Talent (110)</option>
+                  <option value="ADVOCATE">⚖️ Legal & Advocate Services (118)</option>
+                  <option value="PUBLIC-RELATIONS">📢 Public Relations & Communications (111)</option>
+                  <option value="DIGITAL-MEDIA">📱 Digital Marketing & Media (97)</option>
+                </optgroup>
+                <optgroup label="Healthcare, Education & Services">
+                  <option value="HEALTHCARE">🏥 Healthcare & Medical Services (115)</option>
+                  <option value="TEACHER">📚 Education, Teaching & Academics (103)</option>
+                  <option value="DESIGNER">🎨 Design, UI/UX & Creative Arts (107)</option>
+                  <option value="ARTS">🎭 Creative Arts & Entertainment (103)</option>
+                  <option value="CHEF">👨‍🍳 Culinary Arts & Chef Management (118)</option>
+                  <option value="FITNESS">🏋️ Fitness, Sports & Wellness (117)</option>
+                  <option value="APPAREL">👗 Fashion, Apparel & Merchandising (102)</option>
+                  <option value="AGRICULTURE">🌾 Agriculture & Agritech (96)</option>
+                  <option value="BPO">🎧 BPO & Customer Operations (36)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Role Insights Pill -->
+            <div class="role-insight-pill" id="roleInsightPill">
+              <span class="role-pill-icon" id="rolePillIcon">💻</span>
+              <div class="role-pill-text">
+                <strong id="rolePillTitle">Evaluating for: Information Technology & Systems</strong>
+                <span id="rolePillSkills">Key skills: Networking, Cisco, Linux, SQL, Troubleshooting, Windows Server, VMware</span>
+              </div>
+            </div>
+
+            <!-- Minimum Suitability Cutoff Selector -->
+            <div class="cutoff-selector-wrap">
+              <label class="screener-label">
+                <span class="label-step">2</span>
+                <span>Minimum Match Cutoff for "Suitable" Status</span>
+              </label>
+              <div class="cutoff-pills" id="cutoffPills">
+                <button type="button" class="cutoff-pill-btn" data-cutoff="50">50% Permissive</button>
+                <button type="button" class="cutoff-pill-btn active" data-cutoff="55">55% Standard</button>
+                <button type="button" class="cutoff-pill-btn" data-cutoff="65">65% High Fit</button>
+                <button type="button" class="cutoff-pill-btn" data-cutoff="75">75% Strict</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Multi-Resume File Upload & Paste Tab -->
+        <div class="screener-upload-col">
+          <div class="upload-tabs-wrap">
+            <div class="upload-tabs-nav">
+              <button type="button" class="up-tab-btn active" id="tabBtnFiles">📁 Upload Resumes (Bulk Files)</button>
+              <button type="button" class="up-tab-btn" id="tabBtnPaste">📝 Quick Paste Resumes</button>
+            </div>
+
+            <!-- File Upload Pane -->
+            <div class="up-tab-pane show" id="paneUploadFiles">
+              <div class="multi-drop-zone" id="multiDropZone">
+                <input type="file" id="multiFileInput" multiple accept=".pdf,.txt" hidden />
+                <div class="drop-zone-icon">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+                <strong class="drop-zone-title">Drag & drop multiple candidate resumes here</strong>
+                <p class="drop-zone-sub">or <span class="browse-link">browse files</span> from your computer · PDF or TXT files supported</p>
+                <span class="drop-zone-badge">⚡ Bulk Processing Enabled · Upload Multiple Files</span>
+              </div>
+
+              <!-- Selected Files Tray -->
+              <div class="files-tray" id="filesTray" hidden>
+                <div class="tray-header">
+                  <span class="tray-count" id="trayCountText">0 files ready for evaluation</span>
+                  <button type="button" class="btn-text-danger" id="btnClearFiles">Clear All</button>
+                </div>
+                <div class="files-chip-list" id="filesChipList"></div>
+              </div>
+            </div>
+
+            <!-- Paste Resumes Pane -->
+            <div class="up-tab-pane" id="panePasteResumes">
+              <div class="paste-wrap">
+                <textarea id="pasteResumesInput" class="paste-textarea" rows="7" placeholder="Paste candidate resumes here.
+To evaluate multiple candidates at once, separate them with '---' (three hyphens) like this:
+
+Candidate 1 Name
+Software Engineer
+Summary: 4 years experience in Python, FastAPI, Docker...
+Skills: Python, Docker, PostgreSQL, Linux
+---
+Candidate 2 Name
+Senior Accountant
+Summary: CPA with 6 years experience in General Ledger...
+Skills: NetSuite, GL, Reconciliations, Tax, Financial Statements"></textarea>
+                <small class="paste-hint">💡 Tip: You can separate multiple candidate resumes with <code>---</code> on a new line.</small>
+              </div>
+            </div>
+
+            <!-- Evaluate Action CTA -->
+            <div class="eval-action-bar">
+              <button type="button" class="btn-eval-cta" id="btnEvaluateResumes">
+                <span class="eval-btn-icon">⚡</span>
+                <span id="btnEvaluateText">Screen Candidates for Selected Role</span>
+                <span class="screener-spinner" id="screenerSpinner" hidden></span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== SCREENING RESULTS DASHBOARD ==================== -->
+      <div class="screener-results-wrap" id="screenerResults" hidden>
+
+        <!-- Summary KPIs Banner -->
+        <div class="screener-kpi-banner">
+          <div class="skpi-card">
+            <span class="skpi-label">Total Screened</span>
+            <span class="skpi-val" id="skpiTotal">0</span>
+            <span class="skpi-sub">Candidate resumes</span>
+          </div>
+          <div class="skpi-card skpi-highlight">
+            <span class="skpi-label">Suitable for Role</span>
+            <span class="skpi-val" id="skpiSuitable">0</span>
+            <span class="skpi-sub" id="skpiYield">Yield: 0%</span>
+          </div>
+          <div class="skpi-card">
+            <span class="skpi-label">Highly Suitable</span>
+            <span class="skpi-val" id="skpiHighFit">0</span>
+            <span class="skpi-sub">Score ≥ 75%</span>
+          </div>
+          <div class="skpi-card">
+            <span class="skpi-label">Cohort Avg Score</span>
+            <span class="skpi-val" id="skpiAvg">0%</span>
+            <span class="skpi-sub">Mean match score</span>
+          </div>
+          <div class="skpi-card">
+            <span class="skpi-label">Target Role Evaluated</span>
+            <span class="skpi-val role-name-val" id="skpiRoleName">IT Systems</span>
+            <span class="skpi-sub" id="skpiCutoffInfo">Cutoff: 55%</span>
+          </div>
+        </div>
+
+        <!-- Filter & Action Toolbar -->
+        <div class="screener-toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-wrap">
+              <span class="search-ico">🔍</span>
+              <input type="text" id="candidateSearch" placeholder="Search candidate, skill, status..." class="search-input" />
+            </div>
+            <div class="filter-pills-row" id="screenerFilterTabs">
+              <button type="button" class="cand-filter-pill active" data-filter="all">All Candidates (<span id="countAll">0</span>)</button>
+              <button type="button" class="cand-filter-pill" data-filter="suitable">Suitable Only (<span id="countSuitable">0</span>)</button>
+              <button type="button" class="cand-filter-pill" data-filter="high">Highly Suitable (<span id="countHigh">0</span>)</button>
+              <button type="button" class="cand-filter-pill" data-filter="low">Moderate / Low (<span id="countLow">0</span>)</button>
+            </div>
+          </div>
+
+          <div class="toolbar-right">
+            <!-- DOWNLOAD REPORT BUTTONS -->
+            <button type="button" class="btn-download-csv" id="btnDownloadCSV" title="Download clean CSV report with candidate rankings and suitability">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download CSV Report</span>
+            </button>
+            <button type="button" class="btn-download-pdf" id="btnDownloadPDF" title="Open printable executive suitability report ready for PDF export">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              <span>Print / Save PDF Report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Candidate Scorecard Table / List -->
+        <div class="candidate-cards-container" id="candidateCardsContainer">
+          <!-- Rendered dynamically by JS -->
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ======================== ROW 1: CONVERSION FUNNEL & VELOCITY ======================== -->
+    <section class="section-card" id="funnel-section">
+      <div class="card-head-split">
+        <div>
+          <div class="badge-tag">Hiring Pipeline Throughput</div>
+          <h2 class="card-title">Recruitment Conversion Funnel & Stage Drop-off Waterfall</h2>
+          <p class="card-desc">Comprehensive stage yield percentages, candidate volume drop-off rates, and turnaround duration across the candidate journey.</p>
+        </div>
+        <div class="formula-callout">
+          <span class="formula-label">Stage Yield Formula:</span>
+          <code>Yield = (N_stage / N_applications) × 100</code>
+        </div>
+      </div>
+
+      <div class="funnel-container" id="funnelContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ======================== ROW 2: SKILL DEMAND × DOMAIN HEATMAP ======================== -->
+    <section class="section-card" id="heatmap-section">
+      <div class="card-head-split">
+        <div>
+          <div class="badge-tag">Cross-Domain Saturation Matrix</div>
+          <h2 class="card-title">Skill Demand vs Candidate Supply Saturation Heatmap</h2>
+          <p class="card-desc">Highlights acute talent shortages (Red/Amber) vs talent surpluses (Cyan/Green). Hover any cell to inspect exact supply-to-demand ratio (SDR).</p>
+        </div>
+        <div class="heatmap-legend">
+          <span class="leg-item"><span class="leg-swatch def-high"></span>Severe Deficit (SDR &lt; 0.6)</span>
+          <span class="leg-item"><span class="leg-swatch def-mod"></span>Moderate Deficit (0.6 - 0.9)</span>
+          <span class="leg-item"><span class="leg-swatch bal"></span>Balanced (0.9 - 1.4)</span>
+          <span class="leg-item"><span class="leg-swatch sur"></span>Talent Surplus (SDR &ge; 1.5)</span>
+        </div>
+      </div>
+
+      <!-- Interactive Heatmap Matrix -->
+      <div class="heatmap-scroll-wrap">
+        <div class="matrix-grid" id="heatmapMatrix">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- Dynamic Cell Details Drawer / Tooltip Info -->
+      <div class="heatmap-footer-tip" id="heatmapTip">
+        <span class="tip-ico">💡</span>
+        <span class="tip-text">Hover or click any cell above to inspect open requisitions, candidate availability, and targeted recruiter action.</span>
+      </div>
+    </section>
+
+    <!-- ======================== ROW 3: READINESS DISTRIBUTION & RADAR ======================== -->
+    <section class="grid-two-col" id="readiness-section">
+
+      <!-- Candidate Readiness Breakdown (Stacked Bars) -->
+      <div class="section-card">
+        <div class="card-head-split">
+          <div>
+            <div class="badge-tag">Talent Readiness</div>
+            <h2 class="card-title">Candidate Fit Distribution by Domain</h2>
+            <p class="card-desc">% of applicants Ready to Hire vs Needing Upskilling.</p>
+          </div>
+          <span class="chart-pill">Stacked Bar</span>
+        </div>
+
+        <div class="legend-row">
+          <span class="leg-pill"><span class="dot-swatch ok-bg"></span>Ready to Hire (&ge;80% Fit)</span>
+          <span class="leg-pill"><span class="dot-swatch warn-bg"></span>Minor Upskilling (50-79%)</span>
+          <span class="leg-pill"><span class="dot-swatch bad-bg"></span>Critical Gap (&lt;50%)</span>
+        </div>
+
+        <div class="stacked-bar-chart" id="readinessChart">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- 8-Axis Competency Benchmark Radar Chart -->
+      <div class="section-card">
+        <div class="card-head-split">
+          <div>
+            <div class="badge-tag">Competency Benchmarking</div>
+            <h2 class="card-title">8-Axis Technical Competency Radar</h2>
+            <p class="card-desc">Top 10% Talent Pool vs Market Candidate Average across 8 axes.</p>
+          </div>
+          <span class="chart-pill">Radar Benchmark</span>
+        </div>
+
+        <div class="legend-row">
+          <span class="leg-pill"><span class="dot-swatch purple-bg"></span>Top 10% Talent Pool</span>
+          <span class="leg-pill"><span class="dot-swatch cyan-bg"></span>Market Average Candidate</span>
+        </div>
+
+        <div class="radar-canvas-wrap">
+          <canvas id="radarCanvas" width="420" height="340"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================== ROW 4: TIME-TO-FILL BUBBLE & FRICTION INDEX ======================== -->
+    <section class="grid-two-col">
+
+      <!-- Bubble Chart: Time-to-Fill vs Coverage -->
+      <div class="section-card">
+        <div class="card-head-split">
+          <div>
+            <div class="badge-tag">Hiring Velocity vs Fit</div>
+            <h2 class="card-title">Match Coverage vs Time-to-Fill</h2>
+            <p class="card-desc">Bubble size = Candidate pool volume · X = Match Coverage % · Y = Days to Fill.</p>
+          </div>
+          <span class="chart-pill">Dynamic Bubble</span>
+        </div>
+
+        <div class="canvas-chart-wrap">
+          <canvas id="bubbleCanvas" width="500" height="320"></canvas>
+        </div>
+        <div class="bubble-caption">
+          <small>Hover over circles to inspect domain talent pool velocity and candidate supply.</small>
+        </div>
+      </div>
+
+      <!-- Domain Talent Share Donut Chart -->
+      <div class="section-card">
+        <div class="card-head-split">
+          <div>
+            <div class="badge-tag">Domain Volume Split</div>
+            <h2 class="card-title">Talent Pool Distribution by Domain</h2>
+            <p class="card-desc">Candidate volume share across top 8 engineering domains.</p>
+          </div>
+          <span class="chart-pill">Donut Share</span>
+        </div>
+
+        <div class="donut-chart-container">
+          <div class="donut-wrap">
+            <canvas id="donutCanvas" width="220" height="220"></canvas>
+            <div class="donut-center-info">
+              <span class="donut-center-total" id="donutTotalCount">3,842</span>
+              <span class="donut-center-label">Candidates</span>
+            </div>
+          </div>
+          <div class="donut-legend-grid" id="donutLegend">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================== ROW 5: SKILL GAP FRICTION INDEX ======================== -->
+    <section class="section-card">
+      <div class="card-head-split">
+        <div>
+          <div class="badge-tag">Friction Index Formula</div>
+          <h2 class="card-title">Skill Gap Friction Index (SGFI) by Tech Domain</h2>
+          <p class="card-desc">Ranked index of candidate resistance: √[(1/M) ∑(Req - Found)²]. Higher friction represents domains where candidate skills diverge most from industry requisitions.</p>
+        </div>
+        <span class="chart-pill">Ranked Metric</span>
+      </div>
+
+      <div class="friction-grid" id="frictionList">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ======================== ROW 5: WHAT-IF SCENARIO MODELER & ROI CALCULATOR ======================== -->
+    <section class="section-card simulator-box" id="simulator-section">
+      <div class="card-head-split">
+        <div>
+          <div class="badge-tag highlight-tag">Interactive Modeler</div>
+          <h2 class="card-title">Recruiter "What-If" Scenario & ROI Modeler</h2>
+          <p class="card-desc">Adjust sliders below to test how changing match thresholds and applicant volume affects your hiring speed, qualified candidate yield, and cost savings.</p>
+        </div>
+        <div class="sim-badge">Live Math Simulation</div>
+      </div>
+
+      <div class="sim-layout">
+        <!-- Sliders Controls -->
+        <div class="sim-controls">
+          <div class="sim-control-group">
+            <div class="sim-control-header">
+              <span class="sim-control-name">AI Match Cutoff Threshold</span>
+              <span class="sim-control-val" id="valThreshold">70%</span>
+            </div>
+            <input type="range" id="sliderThreshold" min="50" max="90" step="1" value="70" class="sim-slider" />
+            <div class="slider-ticks">
+              <span>50% (Permissive)</span>
+              <span>70% (Balanced)</span>
+              <span>90% (Strict)</span>
+            </div>
+          </div>
+
+          <div class="sim-control-group">
+            <div class="sim-control-header">
+              <span class="sim-control-name">Monthly Inflow of Applicants</span>
+              <span class="sim-control-val" id="valVolume">3,000</span>
+            </div>
+            <input type="range" id="sliderVolume" min="500" max="10000" step="250" value="3000" class="sim-slider" />
+            <div class="slider-ticks">
+              <span>500</span>
+              <span>3,000</span>
+              <span>10,000+</span>
+            </div>
+          </div>
+
+          <div class="sim-control-group">
+            <div class="sim-control-header">
+              <span class="sim-control-name">Recruiter Cost per Hour ($)</span>
+              <span class="sim-control-val" id="valRate">$35/hr</span>
+            </div>
+            <input type="range" id="sliderRate" min="20" max="120" step="5" value="35" class="sim-slider" />
+            <div class="slider-ticks">
+              <span>$20</span>
+              <span>$35 (Standard)</span>
+              <span>$120 (Executive)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulation Computed Results -->
+        <div class="sim-results">
+          <div class="sim-stat-card">
+            <span class="sim-stat-label">Qualified Candidate Pipeline</span>
+            <span class="sim-stat-number" id="simOutCandidates">1,236</span>
+            <span class="sim-stat-sub" id="simOutYield">Yield: 41.2% pass cutoff</span>
+          </div>
+
+          <div class="sim-stat-card">
+            <span class="sim-stat-label">Screening Hours Saved</span>
+            <span class="sim-stat-number" id="simOutHours">1,110 hrs</span>
+            <span class="sim-stat-sub">Automated semantic filter</span>
+          </div>
+
+          <div class="sim-stat-card card-glow">
+            <span class="sim-stat-label">Monthly Cost Savings</span>
+            <span class="sim-stat-number" id="simOutCost">$38,850</span>
+            <span class="sim-stat-sub">Based on recruiter hourly rate</span>
+          </div>
+
+          <div class="sim-stat-card">
+            <span class="sim-stat-label">Predicted Offer Acceptance Rate (OAR)</span>
+            <span class="sim-stat-number" id="simOutOAR">81.6%</span>
+            <span class="sim-stat-sub">High match retention score</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== ROW 6: AI STRATEGIC HIRING SIGNALS ======================== -->
+    <section class="section-card">
+      <div class="card-head-split">
+        <div>
+          <div class="badge-tag">Automated Talent Recommendations</div>
+          <h2 class="card-title">Strategic Talent Intelligence & Action Recommendations</h2>
+          <p class="card-desc">Machine-synthesized intelligence derived from cross-domain skill supply signals and market requisition data.</p>
+        </div>
+      </div>
+
+      <div class="signals-grid">
+        <div class="signal-card signal-critical">
+          <div class="signal-icon">⚡</div>
+          <div class="signal-title">Critical Shortage: Cloud & Kubernetes Security</div>
+          <p class="signal-text">Candidate availability is 52% lower than open requisitions (SDR: 0.48). Time-to-fill has increased to 29 days.</p>
+          <div class="signal-action"><strong>Recruiter Action:</strong> Source strong backend Python/Go developers and provide a 4-week cloud deployment onboarding program.</div>
+        </div>
+
+        <div class="signal-card signal-opportunity">
+          <div class="signal-icon">🎯</div>
+          <div class="signal-title">High-Yield Surge: AI/ML Junior Candidates</div>
+          <p class="signal-text">Recent graduation cohorts show 38% higher competency in PyTorch, LangChain, and FastAPI than last year's talent pool.</p>
+          <div class="signal-action"><strong>Recruiter Action:</strong> Fast-track screening by setting AI cutoff at 75% to capture top 10% talent before competitors.</div>
+        </div>
+
+        <div class="signal-card signal-optimization">
+          <div class="signal-icon">💡</div>
+          <div class="signal-title">Pipeline Optimization: Full Stack React/Node</div>
+          <p class="signal-text">Lowering the strict match cutoff from 76% to 68% unlocks +34% more qualified candidates with negligible drop in interview clearance.</p>
+          <div class="signal-action"><strong>Recruiter Action:</strong> Broaden search criteria to include related frameworks like Vue and Next.js.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="dash-footer">
+    <div class="dash-footer-inner">
+      <div class="footer-left">
+        <strong>InternMatch Recruiter Intelligence Suite</strong>
+        <span>· Data is platform-aggregated across 24 domains · Anonymized signals</span>
+      </div>
+      <div class="footer-right">
+        <a href="applicant.html" class="footer-link">Applicant Portal</a>
+        <a href="index.html" class="footer-link">Home Gateway</a>
+        <span class="footer-tag">v2.5 Enterprise BI</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Candidate Detail Inspector Modal -->
+  <div class="cand-modal-backdrop" id="candModalBackdrop" hidden>
+    <div class="cand-modal-card" id="candModalCard">
+      <div class="cand-modal-header">
+        <div class="cand-modal-head-info">
+          <span class="cand-modal-eyebrow">Candidate Diagnostic Intelligence</span>
+          <h3 class="cand-modal-title" id="modalCandName">Candidate Name</h3>
+          <span class="cand-modal-file" id="modalCandFile">resume.pdf</span>
+        </div>
+        <button type="button" class="cand-modal-close" id="btnModalClose" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="cand-modal-body" id="modalCandBody">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-bar" id="analyticsToast"></div>
+
+  <!-- JavaScript Analytics Engine -->
+  <script src="analytics.js"></script>
+</body>
+</html>

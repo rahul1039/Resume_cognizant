@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Applicant Portal · AI Internship & Domain Matcher · InternMatch</title>
+  <meta name="description" content="Candidate and student portal: match your resume against AI/ML, Data Science, Web, Cloud, and 24 domains, discover cross-domain compatibility, and get skill gap roadmaps." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Aurora Background -->
+  <div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+  <div class="grid-bg"></div>
+
+  <!-- ======================== NAVIGATION ======================== -->
+  <header class="nav" id="topNav">
+    <div style="display:flex;align-items:center">
+      <a class="logo" href="index.html">
+        <span class="logo-mark"></span>
+        <span>InternMatch</span>
+      </a>
+      <span class="portal-badge">🎓 Applicant Portal</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+      <a href="applicant.html" class="nav-link active" data-i18n="navMatch">Match Resume</a>
+      <a href="#gapReportCard" class="nav-link">Skill Diagnostics</a>
+      <a href="recruiter.html" class="nav-link">Recruiter Portal</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="seg" id="langSeg">
+        <button data-l="en" class="on">EN</button>
+        <button data-l="hi">हिन्दी</button>
+      </div>
+      <a href="recruiter.html" class="btn-portal-switch" title="Go to Recruiter Intelligence Suite">
+        <span>💼 Recruiter Portal</span>
+        <span>→</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================== MAIN APPLICANT WORKSPACE ======================== -->
+  <main class="wrap app-inner" style="padding-top:40px">
+
+    <!-- Breadcrumb & Header -->
+    <div class="app-breadcrumb">
+      <a href="index.html" class="back-btn">← <span data-i18n="back">Home</span></a>
+      <span class="bread-sep">/</span>
+      <span class="bread-cur">🎓 Applicant Workspace</span>
+    </div>
+
+    <section class="hero" style="margin-bottom:32px">
+      <span class="eyebrow">Smart Resume Matching Engine</span>
+      <h1>Target your dream domain & discover <span class="grad">all compatible roles</span></h1>
+      <p class="sub">Upload your resume and choose your target domain (AIML, Data Science, Full Stack, etc.), or select <strong>(Any)</strong> to have our AI diagnose which domains you are most compatible with.</p>
+    </section>
+
+    <!-- Two-Column Composer Layout (Main Resume Input + Side Domain Selector) -->
+    <div class="composer-two-col">
+
+      <!-- Left Column: Resume Input Tabs & Textarea/Upload -->
+      <div class="composer-main-col">
+        <section class="card composer" style="max-width:100%;margin:0">
+          <div class="tabs" role="tablist">
+            <button class="tab active" data-mode="paste" data-i18n="tabPaste">Paste text</button>
+            <button class="tab" data-mode="upload" data-i18n="tabUpload">Upload file</button>
+          </div>
+
+          <div class="pane show" id="pane-paste">
+            <textarea id="resume" spellcheck="false" data-i18n-ph="ph"
+              placeholder="Paste your resume here. e.g. First line = Target title, then Summary, Experience, Skills (Python, PyTorch, SQL, etc.)..."></textarea>
+            <div class="voice-bar">
+              <button type="button" id="micBtn" class="mic"><span class="mic-dot"></span><span id="micLabel">Speak your resume</span></button>
+              <select id="voiceLang" title="Speaking language">
+                <option value="en-IN">English (India)</option>
+                <option value="en-US">English (US)</option>
+                <option value="en-GB">English (UK)</option>
+                <option value="hi-IN">हिन्दी (भारत)</option>
+              </select>
+              <span class="count"><span id="charCount">0</span> <span data-i18n="chars">characters</span></span>
+            </div>
+            <p class="mic-hint" data-i18n="hint"></p>
+          </div>
+
+          <div class="pane" id="pane-upload">
+            <label class="drop" id="drop">
+              <input type="file" id="fileInput" accept=".pdf,.txt" hidden />
+              <div class="drop-ico"><span></span></div>
+              <strong id="dropTitle">Drop your resume here</strong>
+              <small id="dropSub">PDF or TXT · or click to browse</small>
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Target Domain Selector Side Card -->
+      <aside class="domain-side-col">
+        <div class="domain-side-card">
+          <div class="domain-side-header">
+            <span class="domain-side-tag">Domain Targeting</span>
+            <h3 class="domain-side-title">Which domain do you want to apply for?</h3>
+            <p class="domain-side-desc">Specify your target field, or select <strong>(Any)</strong> to show all domains plus which ones you are compatible with.</p>
+          </div>
+
+          <div class="domain-select-wrap">
+            <label for="domainSelect" class="domain-select-label">Target Career Domain</label>
+            <select id="domainSelect" class="domain-custom-select">
+              <option value="any" class="opt-any" selected>✦ (Any) — Auto-Detect Across All 24 Domains</option>
+              
+              <optgroup label="Popular Tech Tracks">
+                <option value="aiml">🤖 AI & Machine Learning (AIML)</option>
+                <option value="data-science">📊 Data Science & Big Data</option>
+                <option value="fullstack">🌐 Web & Full Stack Development</option>
+                <option value="cloud-devops">☁️ Cloud Computing & DevOps</option>
+                <option value="cybersecurity">🛡️ Cybersecurity & InfoSec</option>
+              </optgroup>
+
+              <optgroup label="Technology & Engineering (Model Categories)">
+                <option value="information-technology">💻 Information Technology & Systems</option>
+                <option value="engineering">⚙️ Core Engineering & Robotics</option>
+                <option value="automobile">🚗 Automobile & Automotive Engineering</option>
+                <option value="aviation">✈️ Aviation & Aerospace</option>
+                <option value="construction">🏗️ Construction & Civil Engineering</option>
+              </optgroup>
+
+              <optgroup label="Business, Finance & Consulting">
+                <option value="business-development">💼 Business Development & Strategy</option>
+                <option value="finance">📈 Finance & Investments</option>
+                <option value="banking">🏦 Banking & Financial Services</option>
+                <option value="accountant">📑 Accounting & Auditing</option>
+                <option value="consultant">👔 Management & Strategy Consulting</option>
+                <option value="sales">🤝 Sales & Account Management</option>
+              </optgroup>
+
+              <optgroup label="HR, Legal & Communications">
+                <option value="hr">👥 Human Resources (HR) & Talent</option>
+                <option value="advocate">⚖️ Legal & Advocate Services</option>
+                <option value="public-relations">📢 Public Relations & Communications</option>
+                <option value="digital-media">📱 Digital Marketing & Media</option>
+              </optgroup>
+
+              <optgroup label="Healthcare, Education & Services">
+                <option value="healthcare">🏥 Healthcare & Medical Services</option>
+                <option value="teacher">📚 Education, Teaching & Academics</option>
+                <option value="designer">🎨 Design, UI/UX & Creative Arts</option>
+                <option value="arts">🎭 Creative Arts & Entertainment</option>
+                <option value="chef">👨‍🍳 Culinary Arts & Chef Management</option>
+                <option value="fitness">🏋️ Fitness, Sports & Wellness</option>
+                <option value="apparel">👗 Fashion, Apparel & Merchandising</option>
+                <option value="agriculture">🌾 Agriculture & Agritech</option>
+                <option value="bpo">🎧 BPO & Customer Operations</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Dynamic Helper Tip Box -->
+          <div class="domain-helper-box active-any" id="domainHelperBox">
+            <strong id="helperBoxTitle">✦ (Any) Domain Mode Enabled</strong>
+            <span id="helperBoxDesc">The engine will evaluate your resume across all domains and highlight all career fields you are compatible with, ranking them by compatibility percentage.</span>
+          </div>
+
+          <!-- Controls: Top-K & Primary CTA -->
+          <div class="domain-side-controls">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:12px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.05em">Listing Count</span>
+              <div class="seg" id="kSeg">
+                <button data-k="3" class="on" data-i18n="top3">Top 3</button>
+                <button data-k="5" data-i18n="top5">Top 5</button>
+              </div>
+            </div>
+
+            <button class="cta" id="analyze">
+              <span class="cta-text" data-i18n="analyze">⚡ Analyze & Match</span>
+              <span class="spinner"></span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- ======================== RESULTS SECTION ======================== -->
+    <section id="results" class="results" hidden>
+
+      <!-- Target Domain Spotlight (When specific domain is selected) -->
+      <div id="targetDomainSpotlight" class="target-domain-spotlight" hidden></div>
+
+      <!-- Cross-Domain Compatibility Matrix (Always rendered, prominent in Any mode) -->
+      <div id="crossCompatCard" class="cross-compat-card" hidden>
+        <div class="cross-compat-header">
+          <div class="cross-compat-title">
+            <span class="badge warn" style="margin-bottom:6px;display:inline-block">AI Fit Intelligence</span>
+            <h3 id="compatSectionTitle">Cross-Domain Compatibility Diagnostic</h3>
+            <p id="compatSectionDesc">Our semantic AI analyzed your resume across all domains. Here are the career domains your skills are most compatible with:</p>
+          </div>
+          <div class="compat-counter-badge" id="compatCounterBadge">
+            <span>🎯</span>
+            <span id="compatCountText">0 Compatible Domains</span>
+          </div>
+        </div>
+
+        <!-- Spotlight Grid: High & Moderate Compatible Domains -->
+        <div class="compat-spotlight-grid" id="compatSpotlightGrid"></div>
+
+        <!-- Collapsible: View all domains comparison -->
+        <div style="text-align:center">
+          <button type="button" class="btn-toggle-all-domains" id="toggleAllDomainsBtn">
+            <span>Show All 12 Domains Overview</span>
+            <span id="toggleAllArrow">▼</span>
+          </button>
+        </div>
+
+        <div class="all-domains-collapsible" id="allDomainsCollapsible">
+          <div class="compat-spotlight-grid" id="allDomainsGrid"></div>
+        </div>
+      </div>
+
+      <!-- Translated resume text if needed -->
+      <details class="card xlate" id="xlate" hidden>
+        <summary data-i18n="xlateTitle">What we understood (English version of your resume)</summary>
+        <pre id="xlateText"></pre>
+      </details>
+
+      <!-- Summary Scorecard -->
+      <div class="summary card">
+        <div class="sum-item"><small data-i18n="sTitle">Detected title</small><strong id="sTitle">-</strong></div>
+        <div class="sum-item"><small data-i18n="sSkills">Skills detected</small><strong id="sSkills">0</strong></div>
+        <div class="sum-item"><small data-i18n="sCat">Predicted domain</small><strong id="sCat" class="cap">-</strong></div>
+      </div>
+
+      <!-- Lacking Skills Report for Applicants -->
+      <div class="card gap-report-card" id="gapReportCard">
+        <div class="gap-report-head">
+          <div class="gap-report-meta">
+            <span class="badge warn">Candidate Growth Diagnostic</span>
+            <h3>Lacking Skills & Competency Gap Report</h3>
+            <p>Key skills missing from your resume that are required across matched internship listings. Bridge these gaps to maximize candidate hiring readiness.</p>
+          </div>
+          <button class="btn-download-gap" id="downloadGapReportBtn" type="button" title="Download your personalized lacking skills report">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Lacking Skills Report
+          </button>
+        </div>
+        <div class="gap-report-body" id="gapReportBody"></div>
+      </div>
+
+      <!-- Matches & Probability Bars -->
+      <div class="grid2">
+        <div class="card cats">
+          <h3 data-i18n="domProb">Domain probabilities</h3>
+          <div id="catBars"></div>
+        </div>
+        <div class="matches" id="matches"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo footer-logo">
+            <span class="logo-mark"></span>
+            <span>InternMatch</span>
+          </div>
+          <p class="footer-tagline">AI-powered internship matching and cross-domain career discovery for students across India.</p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h5 class="footer-col-title">Portals</h5>
+            <ul>
+              <li><a href="applicant.html">🎓 Applicant Workspace</a></li>
+              <li><a href="recruiter.html">💼 Recruiter Intelligence</a></li>
+              <li><a href="index.html">🏠 Home Gateway</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col-title">Features</h5>
+            <ul>
+              <li><a href="#results">Domain Compatibility</a></li>
+              <li><a href="#gapReportCard">Skill Gap Diagnostic</a></li>
+              <li><a href="recruiter.html#heatmap-section">Market Saturation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col-title">Platform</h5>
+            <ul>
+              <li><span class="pill pill-glow">v2.5 Multi-Portal</span></li>
+              <li><span class="pill">MiniLM · FAISS · Gemini AI</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span>© 2026 InternMatch. All rights reserved.</span>
+          <span class="footer-sep">·</span>
+          <span>Dedicated Applicant Experience</span>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="recruiter.html" class="pill" style="text-decoration:none">Switch to Recruiter Portal →</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

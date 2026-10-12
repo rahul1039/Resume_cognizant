@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InternMatch · AI-Powered Internship Matching Platform</title>
+  <meta name="description" content="InternMatch uses semantic AI to match your resume with internships across 24 domains. Get skill gap analysis and AI career coaching instantly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="aurora"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+  <div class="grid-bg"></div>
+
+  <!-- ======================== NAV ======================== -->
+  <header class="nav" id="topNav">
+    <a class="logo" href="#" onclick="showSection('landing');return false;">
+      <span class="logo-mark"></span>
+      <span>InternMatch</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link active" data-i18n="navHome">Home</a>
+      <a href="applicant.html" class="nav-link" data-i18n="navMatch">🎓 Applicant Portal</a>
+      <a href="recruiter.html" class="nav-link" data-i18n="navAnalytics">💼 Recruiter Portal</a>
+      <a href="#how" class="nav-link" data-i18n="navHow">How it Works</a>
+      <a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
+    </nav>
+    <div class="nav-right">
+      <div class="seg" id="langSeg">
+        <button data-l="en" class="on">EN</button>
+        <button data-l="hi">हिन्दी</button>
+      </div>
+      <a class="nav-cta" href="applicant.html" style="text-decoration:none">Applicant Portal →</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================== LANDING ======================== -->
+  <section id="landing" class="section active">
+
+    <!-- Hero -->
+    <div class="hero-wrap">
+      <div class="hero">
+        <span class="eyebrow" data-i18n="eyebrow">AI-Powered Career & Talent Platform</span>
+        <h1 data-i18n-html="h1">Dedicated Portals for <span class="grad">Applicants & Recruiters</span></h1>
+        <p class="sub" data-i18n="sub">Connecting students targeting internships across AI/ML, Data Science, and 24 domains with recruiters evaluating candidate supply and pipeline velocity. Choose your portal below:</p>
+        <div class="hero-btns">
+          <a class="cta-hero" href="applicant.html" style="text-decoration:none">
+            <span class="cta-icon">⚡</span>
+            <span>🎓 Enter Applicant Portal</span>
+          </a>
+          <a class="cta-ghost" href="recruiter.html" style="text-decoration:none">
+            <span>💼 Recruiter Portal</span>
+            <span class="arrow-ico">→</span>
+          </a>
+        </div>
+        <div class="trust-badges">
+          <span class="badge-item">🔒 <span data-i18n="badge1">No data stored</span></span>
+          <span class="badge-sep">·</span>
+          <span class="badge-item">⚡ <span data-i18n="badge2">Instant results</span></span>
+          <span class="badge-sep">·</span>
+          <span class="badge-item">🤖 <span data-i18n="badge3">Gemini AI coaching</span></span>
+        </div>
+
+        <!-- Dual Role Selection Cards -->
+        <div class="portals-hero-grid">
+          
+          <!-- Card 1: Applicant -->
+          <div class="portal-card applicant">
+            <div>
+              <span class="portal-card-badge">🎓 For Applicants & Students</span>
+              <h3 class="portal-card-title">Target Your Dream Domain & Match Roles</h3>
+              <p class="portal-card-desc">Upload your resume, select your target domain (AIML, Data Science, Full Stack, etc.), or select (Any) to see which career domains your skills are compatible with.</p>
+              <ul class="portal-feature-list">
+                <li><span class="bullet-icon">✦</span> Domain selector with (Any) cross-domain compatibility</li>
+                <li><span class="bullet-icon">✦</span> Instant lacking skills diagnostic & report download</li>
+                <li><span class="bullet-icon">✦</span> Gemini AI personalized 4-week roadmap & tips</li>
+              </ul>
+            </div>
+            <a href="applicant.html" class="btn-portal-launch applicant-cta">Launch Applicant Portal →</a>
+          </div>
+
+          <!-- Card 2: Recruiter -->
+          <div class="portal-card recruiter">
+            <div>
+              <span class="portal-card-badge">💼 For Recruiters & Hiring Teams</span>
+              <h3 class="portal-card-title">Recruiter Analytics & Talent Intelligence</h3>
+              <p class="portal-card-desc">Comprehensive talent acquisition analytics, cross-domain saturation heatmaps, conversion pipeline funnels, and what-if hiring simulations.</p>
+              <ul class="portal-feature-list">
+                <li><span class="bullet-icon">✦</span> Bulk candidate resume screener (PDF/TXT) by target role</li>
+                <li><span class="bullet-icon">✦</span> Instant suitability scorecards & downloadable CSV/PDF reports</li>
+                <li><span class="bullet-icon">✦</span> Skill saturation heatmaps & 8-axis competency radar</li>
+              </ul>
+            </div>
+            <a href="recruiter.html" class="btn-portal-launch recruiter-cta">Open Recruiter Portal →</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-wrap">
+        <div class="stat"><span class="stat-num">24</span><span class="stat-label" data-i18n="stat1">Domains covered</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">86.5%</span><span class="stat-label" data-i18n="stat2">Classification accuracy</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">100+</span><span class="stat-label" data-i18n="stat3">Internship listings</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">MiniLM</span><span class="stat-label" data-i18n="stat4">Semantic embeddings</span></div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="section-content" id="features">
+      <div class="section-header">
+        <span class="eyebrow" data-i18n="featEyebrow">Platform Features</span>
+        <h2 data-i18n="featTitle">Everything you need to land the right internship</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon" style="background:linear-gradient(135deg,#7c5cff,#22d3ee)">⚡</div>
+          <h3 data-i18n="f1t">Semantic Matching</h3>
+          <p data-i18n="f1d">Goes beyond keywords — understands the meaning of your skills using sentence-transformer embeddings and FAISS vector search.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:linear-gradient(135deg,#f472b6,#7c5cff)">✦</div>
+          <h3 data-i18n="f2t">AI Career Coach</h3>
+          <p data-i18n="f2d">Powered by Gemini AI — get a personalised 4–6 week skill roadmap, resume rewording tips, and specific project ideas to close gaps.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:linear-gradient(135deg,#22d3ee,#34d399)">📊</div>
+          <h3 data-i18n="f3t">Skill Gap Report</h3>
+          <p data-i18n="f3d">See exactly which skills you already have, which are related but worded differently, and which ones to build — all in one visual report.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:linear-gradient(135deg,#fbbf24,#f472b6)">🎙️</div>
+          <h3 data-i18n="f4t">Voice Input</h3>
+          <p data-i18n="f4d">Speak your resume out loud in English or Hindi. Built-in speech recognition transcribes it instantly for you.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:linear-gradient(135deg,#34d399,#22d3ee)">🔒</div>
+          <h3 data-i18n="f5t">Privacy First</h3>
+          <p data-i18n="f5d">Your resume is processed in-memory and never stored. Personal data like emails and phone numbers are auto-redacted before AI processing.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:linear-gradient(135deg,#7c5cff,#f472b6)">🌐</div>
+          <h3 data-i18n="f6t">Multilingual UI</h3>
+          <p data-i18n="f6d">Full Hindi and English interface support. Switch languages instantly — all results, labels, and AI summaries adapt in real time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How it Works -->
+    <div class="section-content" id="how">
+      <div class="section-header">
+        <span class="eyebrow" data-i18n="howEyebrow">Simple Process</span>
+        <h2 data-i18n="howTitle">How InternMatch works</h2>
+      </div>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h4 data-i18n="s1t">Upload your resume</h4>
+          <p data-i18n="s1d">Paste text, upload a PDF/TXT file, or speak your resume using voice input. We handle all formats.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h4 data-i18n="s2t">AI analyses the match</h4>
+          <p data-i18n="s2d">MiniLM embeds your skills and searches across internship postings using FAISS for semantic similarity.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h4 data-i18n="s3t">Get your report + coaching</h4>
+          <p data-i18n="s3d">See matched, related, and missing skills. Click "Get AI Coaching" for a personalised roadmap from Gemini.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:44px">
+        <button class="cta-hero" onclick="showSection('app')" data-i18n="howCta">Start Matching Now →</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ======================== APP ======================== -->
+  <section id="app" class="section">
+    <div class="app-inner wrap">
+
+      <!-- Back -->
+      <div class="app-breadcrumb">
+        <button class="back-btn" onclick="showSection('landing')">← <span data-i18n="back">Back to Home</span></button>
+        <span class="bread-sep">/</span>
+        <span class="bread-cur" data-i18n="navMatch">Match Resume</span>
+      </div>
+
+      <!-- Composer Header -->
+      <section class="hero">
+        <span class="eyebrow" data-i18n="eyebrow">Semantic matching engine</span>
+        <h1 data-i18n-html="h1">Find internships that fit your <span class="grad">resume's meaning</span>, not just its keywords.</h1>
+        <p class="sub" data-i18n="sub">Upload or paste your resume. Our semantic AI matches it across 24 domains, finds skill gaps, and gives you a personalised career roadmap.</p>
+      </section>
+
+      <section class="card composer">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-mode="paste" data-i18n="tabPaste">Paste text</button>
+          <button class="tab" data-mode="upload" data-i18n="tabUpload">Upload file</button>
+        </div>
+
+        <div class="pane show" id="pane-paste">
+          <textarea id="resume" spellcheck="false" data-i18n-ph="ph"
+            placeholder="Paste the full resume here. First line = job title, then Summary, Experience, Skills..."></textarea>
+          <div class="voice-bar">
+            <button type="button" id="micBtn" class="mic"><span class="mic-dot"></span><span id="micLabel">Speak your resume</span></button>
+            <select id="voiceLang" title="Speaking language">
+              <option value="en-IN">English (India)</option>
+              <option value="en-US">English (US)</option>
+              <option value="en-GB">English (UK)</option>
+              <option value="hi-IN">हिन्दी (भारत)</option>
+            </select>
+            <span class="count"><span id="charCount">0</span> <span data-i18n="chars">characters</span></span>
+          </div>
+          <p class="mic-hint" data-i18n="hint"></p>
+        </div>
+
+        <div class="pane" id="pane-upload">
+          <label class="drop" id="drop">
+            <input type="file" id="fileInput" accept=".pdf,.txt" hidden />
+            <div class="drop-ico"><span></span></div>
+            <strong id="dropTitle">Drop your resume here</strong>
+            <small id="dropSub">PDF or TXT · or click to browse</small>
+          </label>
+        </div>
+
+        <div class="actions">
+          <div class="seg" id="kSeg">
+            <span class="seg-label" data-i18n="results">Results</span>
+            <button data-k="3" class="on" data-i18n="top3">Top 3</button>
+            <button data-k="5" data-i18n="top5">Top 5</button>
+          </div>
+          <button class="cta" id="analyze">
+            <span class="cta-text" data-i18n="analyze">Analyze resume</span>
+            <span class="spinner"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section id="results" class="results" hidden>
+        <details class="card xlate" id="xlate" hidden>
+          <summary data-i18n="xlateTitle">What we understood (English version of your resume)</summary>
+          <pre id="xlateText"></pre>
+        </details>
+
+        <div class="summary card">
+          <div class="sum-item"><small data-i18n="sTitle">Detected title</small><strong id="sTitle">-</strong></div>
+          <div class="sum-item"><small data-i18n="sSkills">Skills detected</small><strong id="sSkills">0</strong></div>
+          <div class="sum-item"><small data-i18n="sCat">Predicted domain</small><strong id="sCat" class="cap">-</strong></div>
+        </div>
+
+        <!-- Lacking Skills Report for Applicants -->
+        <div class="card gap-report-card" id="gapReportCard">
+          <div class="gap-report-head">
+            <div class="gap-report-meta">
+              <span class="badge warn">Candidate Growth Diagnostic</span>
+              <h3>Lacking Skills & Competency Gap Report</h3>
+              <p>Key skills missing from your resume that are required across matched internship listings. Bridge these gaps to maximize candidate hiring readiness.</p>
+            </div>
+            <button class="btn-download-gap" id="downloadGapReportBtn" type="button" title="Download your personalized lacking skills report">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Lacking Skills Report
+            </button>
+          </div>
+          <div class="gap-report-body" id="gapReportBody"></div>
+        </div>
+
+        <div class="grid2">
+          <div class="card cats">
+            <h3 data-i18n="domProb">Domain probabilities</h3>
+            <div id="catBars"></div>
+          </div>
+          <div class="matches" id="matches"></div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer" id="siteFooter">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo footer-logo">
+            <span class="logo-mark"></span>
+            <span>InternMatch</span>
+          </div>
+          <p class="footer-tagline" data-i18n="footerTagline">AI-powered internship matching for students across India.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="GitHub" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.021C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter/X" title="Twitter / X">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.628 5.905-5.628zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h5 class="footer-col-title" data-i18n="fcProduct">Product</h5>
+            <ul>
+              <li><a href="#" onclick="showSection('app');return false;" data-i18n="fcMatch">Match Resume</a></li>
+              <li><a href="analytics.html" data-i18n="fcAnalytics">Recruiter Analytics</a></li>
+              <li><a href="#features" onclick="showSection('landing');return false;" data-i18n="fcFeatures">Features</a></li>
+              <li><a href="#how" onclick="showSection('landing');return false;" data-i18n="fcHow">How it Works</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col-title" data-i18n="fcTech">Technology</h5>
+            <ul>
+              <li><a href="https://www.sbert.net/" target="_blank" rel="noopener">Sentence Transformers</a></li>
+              <li><a href="https://faiss.ai/" target="_blank" rel="noopener">FAISS Vector Search</a></li>
+              <li><a href="https://ai.google.dev/" target="_blank" rel="noopener">Gemini AI</a></li>
+              <li><a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI Backend</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5 class="footer-col-title" data-i18n="fcLegal">Legal</h5>
+            <ul>
+              <li><a href="#" data-i18n="fcPrivacy">Privacy Policy</a></li>
+              <li><a href="#" data-i18n="fcTerms">Terms of Use</a></li>
+              <li><a href="#" data-i18n="fcCookies">Cookie Policy</a></li>
+              <li><a href="#" data-i18n="fcContact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span data-i18n="copyright">© 2026 InternMatch. All rights reserved.</span>
+          <span class="footer-sep">·</span>
+          <span data-i18n="madeIn">Made with ❤️ in India 🇮🇳</span>
+        </div>
+        <div class="footer-bottom-right">
+          <span class="pill" style="font-size:11px">MiniLM · FAISS · FastAPI</span>
+          <span class="pill pill-glow" style="font-size:11px" data-i18n="pillAcc">86.5% accuracy · English</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
